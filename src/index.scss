@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        @apply bg-primary rounded-md;
+    }
+    &::-webkit-scrollbar-track {
+        @apply bg-[#eee];
+    }
+    .shake {
+        animation: shake .5s;
+    }
+    .loading {
+        span {
+            transition: 1s ease;
+            &:first-child {
+                animation: loading 1s infinite ease-in-out;
+            }
+            &:nth-child(2) {
+                animation: loading 1s .2s infinite ease-in-out;
+            }
+            &:last-child {
+                animation: loading 1s .4s infinite ease-in-out;
+            }
+        }
+    }
+    .photos-added {
+        grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
+    }
+    .home-places {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    footer.footer {
+        .left-side {
+            a::before {
+                content: ".";
+                position: absolute;
+                font-weight: bold;
+                bottom: .2em;
+                left: -.7em;
+                @media (max-width: 1180px) {
+                    display: none;
+                }
+            } 
+        }
+        .support-lists {
+            h2 {
+                font-weight: bold;
+                margin-bottom: 1.5em;
+            }
+            li {
+                margin-bottom: 1em;
+                &:hover {
+                    a {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0,0) ;
+    }
+    20% {
+        transform: translateX(-2%);
+    }
+    50% {
+        transform: translateX(2%);
+    }
+    60% {
+        transform: translateX(-1%);
+    }
+    80% {
+        transform: translateX(1%);
+    }
+    100% {
+        transform: translate(0,0) rotate(0);
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: translateY(0) ;
+    }
+    50% {
+        transform: translateY(.8em);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
